@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="htn.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	
+	<body>
+		<div class="box" id="contentBox">
+		
+		</div>
+		
+		<div class="topRow">
+		<div class="circle">
+			<div class="content">
+			<!-- News -->
+				<img src="News.png" onclick="newsAlert()" alt="News"/>
+			</div>
+		</div>
+		<div class="circle">
+			<div class="content">
+			<!-- Shelter Routes -->
+				<img src="ShelterRoutes.png" onclick="shelterAlert()" alt="ShelterRoutes"/>
+			</div>
+		</div>
+		</div>
+		
+		<div class="botRow">
+		<div class="circle">
+			<div class="content">
+			<!-- More Features -->
+				<img src="MoreFeatures.png" onclick="moreAlert()" alt="Features"/>
+			</div>
+		</div>
+		<div class="circle">
+			<div class="content">
+			<!-- Find Me -->
+				<img src="FindMe.png" onclick="helpAlert()" alt="FindMe"/>
+			</div>
+		</div>
+		</div>
+		
+		<script>
+			function newsAlert() {
+				document.getElementById("contentBox").innerHTML = "News";
+			}
+		</script>
+		
+		<script>
+			function shelterAlert() {
+				document.getElementById("contentBox").innerHTML = "Shelter";
+			}
+		</script>
+		
+		<script>
+			function moreAlert() {
+				document.getElementById("contentBox").innerHTML = "More Features";
+			}
+		</script>
+		
+		<script>
+			function helpAlert() {
+				document.getElementById("contentBox").innerHTML = "Find Me";
+			}
+		</script>
+	</body>
+</html>
