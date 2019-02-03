@@ -1,5 +1,5 @@
 # //TODO: TEAM NAME
-## The emergency app
+## OrangeFlare Emergency App
 
 #### Authors
 
@@ -8,22 +8,8 @@
 * Cait Potridge
 * Thatcher Rickertsen
 
-#### Description
+#### The Idea
+To create a web service which warns users of potential disasters, provides routes to local safe shelter, along with the function of broadcasting geolation for first responders to find them
 
-This app is designed for the 2019 Auburn Hacks event. It allows for first responders to find and locate survivors in a disaster scenario. It also provides information and help to those recovering from said disaster.
+For this project we wanted to create an all-in-one disaster aid tool. We came up with three major features we wanted to implement: getting users a quick guide to routes to a safe location, keeping them updated with local events, and providing a location tool for finding anyone who is lost or trapped. 
 
-#### Requirements
-
-Describe the stuff needed here
-
-#### Installation
-
-Now we describe the steps in order to run the app :)
-
-```cmd
- Give code blocks with commands 
-```
-
-#### Credits
-
-Give credits here
