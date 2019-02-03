@@ -1,12 +1,87 @@
 <html>
 
 <head>
-  <title>//TODO: Emergency App</title>
+	<title>//TODO: Emergency App</title>
+	<link rel="stylesheet" type="text/css" href="htn.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-  <div id="root"></div>
-  <script src="/static/bundle.js"></script>
+	<div class="box" id="contentBox">
+		<!--<div id="root"></div>
+		<script src="/static/bundle.js"></script>-->	
+	</div>
+
+	<div class="topRow">
+		<div class="circle">
+			<div class="content">
+				<!-- News -->
+				<img src="News.png" onclick="newsAlert()" alt="News"/>
+			</div>
+		</div>
+
+		<div class="circle">
+			<div class="content">
+				<!-- Shelter Routes -->
+				<img src="ShelterRoutes.png" onclick="shelterAlert()" alt="ShelterRoutes"/>
+			</div>
+		</div>
+	</div>	
+
+
+	<div class="botRow">
+		<div class="circle">
+			<div class="content">
+				<!-- More Features -->
+				<img src="MoreFeatures.png" onclick="moreAlert()" alt="Features"/>
+			</div>
+		</div>
+		
+		<div class="circle">
+			<div class="content">
+				<!-- Find Me -->
+				<img src="FindMe.png" onclick="helpAlert()" alt="FindMe"/>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function newsAlert() {
+			getNewsData();
+		}
+	</script>
+
+	<script>
+		function getNewsData() {
+			return fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=f2825310410d47a7a3d372f11c7a6e3a")
+			.then(function (response) {
+				return response.text();
+			})
+			.then(function (data) {
+      			console.log(data); //this will just be text
+    		  	var data_obj = JSON.parse(data);
+      			return data_obj
+ 		 	})
+		}
+	</script>
+
+	<script>
+		function shelterAlert() {
+			window.open("https://auburn.edu/~cap0038/locate.html");
+		}
+	</script>
+
+	<script>
+		function moreAlert() {
+			document.getElementById("contentBox").innerHTML = "More Features";
+		}
+	</script>
+
+	<script>
+		function helpAlert() {
+			document.getElementById("contentBox").innerHTML = "Find Me";
+		}
+	</script>
 </body>
 
 </html>
