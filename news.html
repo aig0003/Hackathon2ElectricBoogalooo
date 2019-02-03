@@ -1,0 +1,71 @@
+<html>
+
+<head>
+	<title>//TODO: Emergency App</title>
+	<link rel="stylesheet" type="text/css" href="htn.css">
+	<link rel="stylesheet" type="text/css" href="htn.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<div class="box" id="contentBox">
+		<!--<div id="root"></div>
+		<script src="/static/bundle.js"></script>-->
+		<div class="circle">
+			<div class="content">
+				<img src="News.png" onclick="getNewsData()" alt="News"/>		
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function getNewsData() {
+			return fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=f2825310410d47a7a3d372f11c7a6e3a")
+			.then(function (response) {
+				return response.text();
+			})
+			.then(function (data) {
+      			console.log(data); //this will just be text
+    		  	var data_obj = JSON.parse(data);
+      			document.getElementById("contentBox").innerHTML = data_obj.map(news => source);
+ 		 	})
+		}
+		
+		
+		function json2table(json, classes) {
+			var cols = Object.keys(json[0]);
+			var headerRow = '';
+			var bodyRows = '';
+
+			classes = classes || '';
+             
+    cols.map(function(col) {
+          headerRow += '<th>' + capitalizeFirstLetter(col) + '</th>';
+    });
+    
+    json.map(function(row) {
+          bodyRows += '<tr>';
+          // To do: Loop over object properties and create cells
+          bodyRows += '</tr>';
+    });
+    
+    cols.map(function(colName) {
+          bodyRows += '<td>' + row[colName] + '<td>';
+    });
+
+    return '<table class=' +
+               classes +
+              '><thead><tr>' +
+               headerRow +
+              '</tr></thead><tbody>' +
+               bodyRows +
+               '</tbody></table>';
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+	</script>
+</body>
+
+</html>

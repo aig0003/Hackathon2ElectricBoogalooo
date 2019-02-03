@@ -3,11 +3,12 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="htn.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>//TODO: Emergency App</title>
 	</head>
 	
 	<body>
 		<div class="box" id="contentBox">
-		
+			Welcome to OrangeFlare! <br>Select an option below: News, Shelters Nearby, Future Features, and Your Current Location.  
 		</div>
 		
 		<div class="topRow">
@@ -45,25 +46,42 @@
 		
 		<script>
 			function newsAlert() {
-				document.getElementById("contentBox").innerHTML = "News";
+				document.getElementById("contentBox").innerHTML = window.location = ("https://www.auburn.edu/~cap0038/news.html");
 			}
 		</script>
 		
 		<script>
 			function shelterAlert() {
-				document.getElementById("contentBox").innerHTML = "Shelter";
+				document.getElementById("contentBox").innerHTML = (window.location = ("https://www.auburn.edu/~cap0038/locate.html"));
 			}
 		</script>
 		
 		<script>
 			function moreAlert() {
-				document.getElementById("contentBox").innerHTML = "More Features";
+				document.getElementById("contentBox").innerHTML = "Future Features";
 			}
 		</script>
 		
 		<script>
 			function helpAlert() {
-				document.getElementById("contentBox").innerHTML = "Find Me";
+				getLocation();
+			}
+		</script>
+
+		<script>
+			var x = document.getElementById("contentBox");
+
+			function getLocation() {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(showPosition);
+				} else { 
+					x.innerHTML = "Geolocation is not supported by this browser.";
+				}
+			}
+
+			function showPosition(position) {
+				x.innerHTML = "Latitude: " + position.coords.latitude + 
+				"  Longitude: " + position.coords.longitude;
 			}
 		</script>
 	</body>
