@@ -32,6 +32,7 @@
     "webpack-dev-server": "^2.6.1"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "css-loader": "^0.28.11",
@@ -43,6 +44,6 @@
     "react": "^15.6.2",
     "react-dom": "^15.6.1",
     "style-loader": "^0.21.0",
-    "twilio": "^3.27.1"
+    "twilio": "^2.11.1"
   }
 }

@@ -4,12 +4,15 @@ import { observable } from "mobx";
 import { observer } from "mobx-react";
 import DevTools from "mobx-react-devtools";
 
-import RandomSelector from "./components/randomSelector";
+import RandomSelector from "./components/EmergencyApp";
 import { URL } from "url";
 import http = require('http');
 
+import axios from 'axios';
+
 class AppState {
   @observable timer = 0;
+  @observable news = [];
 
   constructor() {
     setInterval(() => {
@@ -19,6 +22,10 @@ class AppState {
 
   resetTimer() {
     this.timer = 0;
+  }
+
+  setNews(newsIn) {
+    this.news = newsIn;
   }
 }
 
@@ -52,7 +59,6 @@ class SendMessageView extends React.Component<{ appState: AppState }, {}> {
     )
   }
   sendMessage = () => {
-    console.log("You clicked me :)");
     var accountSid = 'ACa307262eb239bfb6c410fff63f06efde'; // Your Account SID from www.twilio.com/console
     var authToken = 'fbd1a681d1baa06c1f3089d4022fbae4';   // Your Auth Token from www.twilio.com/console
 
@@ -68,6 +74,49 @@ class SendMessageView extends React.Component<{ appState: AppState }, {}> {
   }
 }
 
+@observer
+class GetNews extends React.Component<{ appState: AppState }, {}> {
+  // state = {
+  //   news: []
+  // }
+
+  componentDidMount() {
+    axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=f2825310410d47a7a3d372f11c7a6e3a`)
+      .then(res => {
+        console.log(res);
+        const news = res.data.articles;
+        // console.log(this.state.news);
+        // this.setState({ news });
+        this.props.appState.setNews(news);
+      });
+  }
+
+  render() {
+    return (<div>
+      <button onClick={this.getNews}>
+        Do a thing for michael
+      </button>
+      <div>
+        <ul>
+          {/* {this.state.news} */}
+        </ul>
+        <ul>
+          {/* {this.state.news.map(news =>
+            <li key={news.publishedAt}>{news.title}</li>
+          )} */}
+          {this.props.appState.news.map(news => <li key={news.publishedAt}>{news.title}</li>)}
+        </ul>
+      </div>
+    </div>
+    )
+  }
+
+  getNews = () => {
+    console.log("The news:");
+    // console.log(this.state.news);
+  }
+}
+
 const appState = new AppState();
 // const randomBackend = new RandomBackend();
 ReactDOM.render(
@@ -75,6 +124,7 @@ ReactDOM.render(
     <TimerView appState={appState} />
     <RandomSelector />
     <SendMessageView appState={appState} />
+    <GetNews appState={appState} />
   </div >,
   document.getElementById("root")
 );

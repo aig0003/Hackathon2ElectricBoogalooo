@@ -4,22 +4,19 @@ import { observable } from "mobx";
 import { observer } from "mobx-react";
 import DevTools from "mobx-react-devtools";
 
-import Translator from "./translator";
 
 import "./styles.css";
 // require("style!css-loader!styles.css");
 
 @observer
-export default class RandomSelector extends React.Component<
-  {},
-  {
-    backend: RandomBackend;
-    randomNum: Number;
-    translator: Translator;
-  }
+export default class EmergencyApp extends React.Component<
+{},
+{
+  backend: RandomBackend;
+  randomNum: Number;
+}
 > {
   public backend = new RandomBackend();
-  public translator = new Translator();
   constructor() {
     super();
   }
@@ -28,15 +25,7 @@ export default class RandomSelector extends React.Component<
     console.log(this.props);
     return (
       <div>
-        <div>
-          <button onClick={() => this.translator.generateRandomFoodItem()}>
-            GENERATE!!
-          </button>
-        </div>
-        <div className="test_category">
-          {this.translator.appState.currentFoodItem}
-          {this.translator.appState.currentFoodCategory}
-        </div>
+        Temp
       </div>
     );
   }
