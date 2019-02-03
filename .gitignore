@@ -1,4 +1,4 @@
-react-boilerplate/node_modules/
-react-boilerplate/static/bundle.js
-react-boilerplate/.vscode
-react-boilerplate/yarn.lock
+node_modules/
+static/bundle.js
+.vscode
+yarn.lock
